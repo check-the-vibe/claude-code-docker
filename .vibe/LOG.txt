@@ -1,0 +1,45 @@
+## 2024-12-06 - Open Source Project Setup
+
+### Completed Tasks:
+1. **Dockerfile Best Practices**: Updated Dockerfile to use Node.js 22, proper security practices (non-root user), and optimized layer caching
+2. **Documentation**: Created comprehensive README.md with usage examples, security considerations, and proper attribution to Anthropic
+3. **Contribution Setup**: Added CONTRIBUTING.md with clear guidelines for contributors
+4. **Licensing**: Added MIT License with proper attribution to Anthropic for the original Claude Code CLI
+5. **Git Configuration**: Created proper .gitignore and .dockerignore files for development
+6. **GitHub Templates**: Added issue templates for bug reports, feature requests, and questions
+
+### Project Status:
+The project is now ready for open source contributions with:
+- Proper Docker best practices implemented
+- Complete documentation for users and contributors  
+- Clear attribution to Anthropic and Claude Code CLI
+- GitHub issue templates for community engagement
+- MIT licensing with appropriate disclaimers
+
+### Key Files Created/Updated:
+- Dockerfile (security & best practices)
+- README.md (comprehensive documentation)
+- CONTRIBUTING.md (contributor guidelines)
+- LICENSE (MIT with attribution)
+- .gitignore (development files)
+- .dockerignore (build optimization)
+- .github/ISSUE_TEMPLATE/* (bug, feature, question templates)
+
+## 2024-12-06 - Docker Build Error Fix
+
+### Issue Resolved:
+**Problem**: Docker build was failing with npm permission error (EACCES) when trying to install @anthropic-ai/claude-code as non-root user.
+
+**Root Cause**: The Dockerfile was switching to the `claude-user` before installing npm packages globally, but global npm installations require root permissions to write to `/usr/local/lib/node_modules/`.
+
+**Solution**: Reordered Dockerfile steps to:
+1. Install Claude Code CLI globally as root first
+2. Then create and switch to non-root user
+3. Maintain security by running the actual container as non-root
+
+### Verification:
+- Docker build now completes successfully ✅
+- Claude CLI command available and functional ✅
+- Container still runs as non-root user for security ✅
+
+The project successfully wraps the Claude Code CLI in a Docker container while maintaining proper attribution and providing a contribution-ready open source structure.
