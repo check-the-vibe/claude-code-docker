@@ -84,9 +84,3 @@ This Docker wrapper is based on [Claude Code](https://docs.anthropic.com/en/docs
 ## Contributing
 
 We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-The original Claude Code CLI is developed by Anthropic. Please refer to their licensing terms.
